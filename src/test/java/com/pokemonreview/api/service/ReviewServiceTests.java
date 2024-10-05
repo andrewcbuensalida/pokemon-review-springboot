@@ -59,10 +59,10 @@ public class ReviewServiceTests {
 
     @Test
     public void ReviewService_GetReviewsByPokemonId_ReturnReviewDto() {
-        int reviewId = 1;
-        when(reviewRepository.findByPokemonId(reviewId)).thenReturn(Arrays.asList(review));
+        int pokemonId = 1;
+        when(reviewRepository.findByPokemonId(pokemonId)).thenReturn(Arrays.asList(review));
 
-        List<ReviewDto> pokemonReturn = reviewService.getReviewsByPokemonId(reviewId);
+        List<ReviewDto> pokemonReturn = reviewService.getReviewsByPokemonId(pokemonId);
 
         Assertions.assertThat(pokemonReturn).isNotNull();
     }
@@ -80,14 +80,13 @@ public class ReviewServiceTests {
         ReviewDto reviewReturn = reviewService.getReviewById(reviewId, pokemonId);
 
         Assertions.assertThat(reviewReturn).isNotNull();
-        Assertions.assertThat(reviewReturn).isNotNull();
     }
 
     @Test
-    public void ReviewService_UpdatePokemon_ReturnReviewDto() {
+    public void ReviewService_UpdateReview_ReturnReviewDto() {
         int pokemonId = 1;
         int reviewId = 1;
-        pokemon.setReviews(Arrays.asList(review));
+        pokemon.setReviews(Arrays.asList(review)); // but review is not an array though
         review.setPokemon(pokemon);
 
         when(pokemonRepository.findById(pokemonId)).thenReturn(Optional.of(pokemon));

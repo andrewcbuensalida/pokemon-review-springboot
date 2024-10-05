@@ -2,7 +2,6 @@ package com.pokemonreview.api.repository;
 
 import com.pokemonreview.api.models.Pokemon;
 import org.assertj.core.api.Assertions;
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
@@ -13,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @DataJpaTest
-@AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
+@AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2) // use H2 in-memory database
 public class PokemonRepositoryTests {
 
     @Autowired
