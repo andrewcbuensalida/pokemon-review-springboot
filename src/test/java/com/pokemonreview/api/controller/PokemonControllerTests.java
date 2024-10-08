@@ -57,7 +57,10 @@ public class PokemonControllerTests {
 
     @Test
     public void PokemonController_CreatePokemon_ReturnCreated() throws Exception {
-        given(pokemonService.createPokemon(ArgumentMatchers.any())).willAnswer((invocation -> invocation.getArgument(0)));
+      given(pokemonService.createPokemon(ArgumentMatchers.any())).willAnswer(invocation -> {
+        // invocation.getArgument(0) is pokemonDto below
+        return invocation.getArgument(0);
+      });
 
         ResultActions response = mockMvc.perform(post("/api/pokemon/create")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -112,7 +115,6 @@ public class PokemonControllerTests {
 
     @Test
     public void PokemonController_DeletePokemon_ReturnString() throws Exception {
-        int pokemonId = 1;
         doNothing().when(pokemonService).deletePokemonId(1);
 
         ResultActions response = mockMvc.perform(delete("/api/pokemon/1/delete")
