@@ -21,6 +21,7 @@ public class Pokemon {
     private String name;
     private String type;
 
+    // CascadeType.ALL means that all operations (persist, merge, remove, refresh, detach) will be cascaded to the reviews. orphanRemoval = true means that if a review is removed from the list, it will also be deleted from the database.
     @OneToMany(mappedBy = "pokemon", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Review> reviews = new ArrayList<Review>();
 }

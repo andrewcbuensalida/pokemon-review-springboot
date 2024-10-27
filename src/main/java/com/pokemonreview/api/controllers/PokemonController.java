@@ -28,6 +28,7 @@ public class PokemonController {
 
   @GetMapping("pokemon/{id}")
   public ResponseEntity<PokemonDto> pokemonDetail(@PathVariable int id) {
+    // could either return ResponseEntity.ok() or new ResponseEntity<>... like above
     return ResponseEntity.ok(pokemonService.getPokemonById(id));
 
   }
